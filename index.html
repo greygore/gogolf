@@ -1,18 +1,24 @@
 <html>
 <head>
 	<title>GoGolf</title>
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 </head>
 <body>
-	<span style="float:right">
-		<form method="post">
+	<span id="userbar" style="float:right">
+		<form id="login">
 			<input id="username" name="username" placeholder="Username"/>
 			<input id="password" name="password" type="password" placeholder="Password"/>
+			<button type="submit">Login</button>
 		</form>
+		<span id="loggedIn" style="display: none">
+			Welcome <span id="userGivenName">goGolfUser</span>
+			<button id="logout">Logout</button>
+		</span>
 	</span>
 	<h1>Hello GoGolf</h1>
 	<p>GoGolf content goes here</p>
 	<script src="//da189i1jfloii.cloudfront.net/js/kinvey-js-0.9.14.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script src="app.js"></script>
+	<script src="ui.js"></script>
 </body>
 </html>
