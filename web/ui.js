@@ -71,6 +71,7 @@ $(function(Kinvey, GoGolf) {
             success: function(list) {
                 $('#showGolfGroups').html('');
 
+                $('#showGolfGroups').append("<br/> Private Groups: <br/>");
                 $.each(list, function(key, val) {
                     console.log($('#privategolfgroup').html());
                     console.log(val);
@@ -87,11 +88,13 @@ $(function(Kinvey, GoGolf) {
 
 
         TestRounds = new GoGolf.GolfGroups();
+        var myQuery = new Kinvey.Query();
         myQuery.on('Private').equal('N')     ;
         TestRounds.setQuery(myQuery)   ;
         TestRounds.fetch({
             success: function(list) {
 
+                $('#showGolfGroups').append("<br/> Public Groups: <br/>");
                 $.each(list, function(key, val) {
                     console.log($('#publicgolfgroup').html());
                     console.log(val);
