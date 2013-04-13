@@ -19,6 +19,9 @@
 		<button id="getRounds">Get Rounds</button>
 		<table id="showRounds">
 		</table>
+		<button id="getRoundParticipants">Get Rounds &amp; Participants</button>
+		<table id="showRoundParticipants">
+		</table>
 	</div>
 	<script src="//da189i1jfloii.cloudfront.net/js/kinvey-js-0.9.14.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -32,6 +35,19 @@
 	  	<td>{{CourseCity}}</td>
 	  	<td>{{DateTime}}</td>
 	  	<td>{{Price}}</td>
+	  </tr>
+	  {{/attr}}
+	</script>
+	<script id="roundParticipants" type="text/html">
+	  {{#attr}}
+	  <tr>
+	  	<td>{{Round.attr.CourseName}}</td>
+	  	<td>{{Round.attr.CourseCity}}</td>
+	  	<td>{{Round.attr.DateTime}}</td>
+	  	<td>{{Round.attr.Price}}</td>
+	  	<td>{{User.attr.first_name}}</td>
+	  	<td>{{User.attr.last_name}}</td>
+	  	<td>{{User.attr.email}}</td>
 	  </tr>
 	  {{/attr}}
 	</script>

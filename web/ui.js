@@ -50,4 +50,24 @@ $(function(Kinvey, GoGolf) {
         });
     });
 
+    $('#getRoundParticipants').click(function(e) {
+        var TestParticipants = new GoGolf.RoundParticipants();
+        TestParticipants.fetch({
+            resolve: ['Round', 'User'],
+            success: function(list) {
+                $('#showRoundParticipants').html('');
+
+                $.each(list, function(key, val) {
+                    console.log(val);
+                    var output = Mustache.render($('#roundParticipants').html(), val);
+                    console.log(output);
+                    $('#showRoundParticipants').append(output);
+                });
+            },
+            error: function(e) {
+
+            }
+        });
+    });
+
 }(window.Kinvey, window.GoGolf));
