@@ -65,7 +65,10 @@ $(function(Kinvey, GoGolf) {
                 });
             },
             error: function(e) {
-
+                console.log('Unable to retrieve round participants');
+            }
+        });
+    });
 
     $('#getGolfGroups').click(function(e) {
         var TestRounds = new GoGolf.GolfGroups();
