@@ -66,6 +66,58 @@ $(function(Kinvey, GoGolf) {
             },
             error: function(e) {
 
+
+    $('#getGolfGroups').click(function(e) {
+        var TestRounds = new GoGolf.GolfGroups();
+        var myQuery = new Kinvey.Query();
+
+
+        var user = Kinvey.getCurrentUser();
+
+        if (null !== user) {
+
+        myQuery.on('Private').equal('Y')     ;
+        myQuery.on('Owner').equal(user.get('_id'));
+        TestRounds.setQuery(myQuery)   ;
+
+        TestRounds.fetch({
+            success: function(list) {
+                $('#showGolfGroups').html('');
+
+                $('#showGolfGroups').append("<br/> Private Groups: <br/>");
+                $.each(list, function(key, val) {
+                    console.log($('#privategolfgroup').html());
+                    console.log(val);
+                    var output = Mustache.render($('#privategolfgroup').html(), val);
+                    console.log(output);
+                    $('#showGolfGroups').append(output);
+                });
+            },
+            error: function(e) {
+                console.log('Unable to retrieve private golf groups');
+            }
+        });
+        }
+
+
+        TestRounds = new GoGolf.GolfGroups();
+        var myQuery = new Kinvey.Query();
+        myQuery.on('Private').equal('N')     ;
+        TestRounds.setQuery(myQuery)   ;
+        TestRounds.fetch({
+            success: function(list) {
+
+                $('#showGolfGroups').append("<br/> Public Groups: <br/>");
+                $.each(list, function(key, val) {
+                    console.log($('#publicgolfgroup').html());
+                    console.log(val);
+                    var output = Mustache.render($('#publicgolfgroup').html(), val);
+                    console.log(output);
+                    $('#showGolfGroups').append(output);
+                });
+            },
+            error: function(e) {
+                console.log('Unable to retrieve public golf groups');
             }
         });
     });

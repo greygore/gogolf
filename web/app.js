@@ -53,4 +53,23 @@
   	}
   });
 
+    App.GolfGroup = Kinvey.Entity.extend({
+        constructor: function(attributes) {
+            Kinvey.Entity.prototype.constructor.call(this, attributes, 'GolfGroup');
+        },
+
+        getGolfGroupName: function() {
+            return this.get('Name');
+        }
+
+    });
+
+    App.GolfGroups = Kinvey.Collection.extend({
+        entity: App.GolfGroup,
+
+        constructor: function(options) {
+            Kinvey.Collection.prototype.constructor.call(this, 'GolfGroup', options);
+        }
+    });
+
 }(window, window.Kinvey));
