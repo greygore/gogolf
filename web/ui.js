@@ -1,13 +1,13 @@
-$(function(Kinvey) {
+$(function(Kinvey, GoGolf) {
     $('#login').submit(function(e) {
         e.preventDefault();
 
-        var goGolfUser = new Kinvey.User();
+        var user = new Kinvey.User();
     
-        goGolfUser.login($('#username').val(), $('#password').val(), {
+        user.login($('#username').val(), $('#password').val(), {
             success: function(user) {
                 console.log('User logged in');
-                $('#userGivenName').text(user.get('name'));
+                $('#userGivenName').text(user.get('first_name'));
                 $('#login').hide();
                 $('#loggedIn').show();
             },
@@ -32,4 +32,25 @@ $(function(Kinvey) {
             });
         }
     });
-}(window.Kinvey));
+
+    $('#getRounds').click(function(e) {
+        var TestRounds = new GoGolf.Rounds();
+        TestRounds.fetch({
+            success: function(list) {
+                $('#showRounds').html('');
+
+                $.each(list, function(key, val) {
+                    console.log($('#round').html());
+                    console.log(val);
+                    var output = Mustache.render($('#round').html(), val);
+                    console.log(output);
+                    $('#showRounds').append(output);
+                });
+            },
+            error: function(e) {
+                console.log('Unable to retrieve rounds');
+            }
+        });
+    });
+
+}(window.Kinvey, window.GoGolf));

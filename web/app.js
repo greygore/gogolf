@@ -15,4 +15,23 @@
 		}
 	});
 
+	App.Round = Kinvey.Entity.extend({
+		constructor: function(attributes) {
+			Kinvey.Entity.prototype.constructor.call(this, attributes, 'Round');
+		},
+
+		getCourseName: function() {
+			return this.get('CourseName');
+		}
+
+	});
+
+  App.Rounds = Kinvey.Collection.extend({
+  	entity: App.Round,
+
+		constructor: function(options) {
+			Kinvey.Collection.prototype.constructor.call(this, 'Round', options);
+		}
+  });
+
 }(window, window.Kinvey));

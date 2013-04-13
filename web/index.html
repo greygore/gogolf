@@ -15,10 +15,26 @@
 		</span>
 	</span>
 	<h1>Hello GoGolf</h1>
-	<p>GoGolf content goes here</p>
+	<div id="content">
+		<button id="getRounds">Get Rounds</button>
+		<table id="showRounds">
+		</table>
+	</div>
 	<script src="//da189i1jfloii.cloudfront.net/js/kinvey-js-0.9.14.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="vendor/mustache.js"></script>
 	<script src="app.js"></script>
 	<script src="ui.js"></script>
+	<script id="round" type="text/html">
+	  {{#attr}}
+	  <tr>
+	  	<td>{{CourseName}}</td>
+	  	<td>{{CourseCity}}</td>
+	  	<td>{{Date}}</td>
+	  	<td>{{Time}}</td>
+	  	<td>{{Price}}</td>
+	  </tr>
+	  {{/attr}}
+	</script>
 </body>
 </html>
