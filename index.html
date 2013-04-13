@@ -13,34 +13,6 @@
 	<h1>Hello GoGolf</h1>
 	<p>This should determine if we're able to connect to Kinvey</p>
 	<script src="//da189i1jfloii.cloudfront.net/js/kinvey-js-0.9.14.min.js"></script>
-	<script>
-		Kinvey.init({
-			'appKey': 'kid_VPf52bDYWJ',
-			'appSecret': 'b5986292f3d244eab8b2f91124340506'
-		});
-
-		Kinvey.ping({
-			success: function(response) {
-				console.log('Kinvey Ping Success. Kinvey Service is alive, version: ' + response.version + ', response: ' + response.kinvey);
-			},
-			error: function(error) {
-				console.log('Kinvey Ping Failed. Response: ' + error.description);
-			}
-		});
-
-		// Kinvey.User.create({
-		// 	username: 'gwood',
-		// 	password: 'greygore',
-		// 	name: 'Gregory Wood'
-		// }, {
-		// 	success: function(user) {
-		// 		// user is the created user, which is now logged in.
-		// 	},
-		// 	error: function(e) {
-		// 		// Failed to create the user.
-		// 		// e holds information about the nature of the error.
-		// 	}
-		// });
-	</script>
+	<script src="app.js"></script>
 </body>
 </html>
