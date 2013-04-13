@@ -40,10 +40,7 @@ $(function(Kinvey, GoGolf) {
                 $('#showRounds').html('');
 
                 $.each(list, function(key, val) {
-                    console.log($('#round').html());
-                    console.log(val);
                     var output = Mustache.render($('#round').html(), val);
-                    console.log(output);
                     $('#showRounds').append(output);
                 });
             },
