@@ -20,6 +20,12 @@
 		<table id="showRounds">
 		</table>
 	</div>
+
+    <div id="golfGroupcontent">
+        <button id="getGolfGroups">Get Golf Groups</button>
+        <table id="showGolfGroups">
+        </table>
+    </div>
 	<script src="//da189i1jfloii.cloudfront.net/js/kinvey-js-0.9.14.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script src="vendor/mustache.js"></script>
@@ -36,5 +42,13 @@
 	  </tr>
 	  {{/attr}}
 	</script>
+
+    <script id="golfgroup" type="text/html">
+        {{#attr}}
+        <tr>
+            <td>{{Name}}</td>
+        </tr>
+        {{/attr}}
+    </script>
 </body>
 </html>

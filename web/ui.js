@@ -53,4 +53,25 @@ $(function(Kinvey, GoGolf) {
         });
     });
 
+
+    $('#getGolfGroups').click(function(e) {
+        var TestRounds = new GoGolf.GolfGroups();
+        TestRounds.fetch({
+            success: function(list) {
+                $('#showGolfGroups').html('');
+
+                $.each(list, function(key, val) {
+                    console.log($('#golfgroup').html());
+                    console.log(val);
+                    var output = Mustache.render($('#golfgroup').html(), val);
+                    console.log(output);
+                    $('#showGolfGroups').append(output);
+                });
+            },
+            error: function(e) {
+                console.log('Unable to retrieve golf groups');
+            }
+        });
+    });
+
 }(window.Kinvey, window.GoGolf));

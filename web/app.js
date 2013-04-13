@@ -49,7 +49,7 @@
         entity: App.GolfGroup,
 
         constructor: function(options) {
-            Kinvey.Collection.prototype.constructor.call(this, 'GolfGroups', options);
+            Kinvey.Collection.prototype.constructor.call(this, 'GolfGroup', options);
         }
     });
 
