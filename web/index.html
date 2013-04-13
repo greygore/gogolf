@@ -43,12 +43,23 @@
 	  {{/attr}}
 	</script>
 
-    <script id="golfgroup" type="text/html">
+    <script id="privategolfgroup" type="text/html">
+        <br/> Private Groups: <br/>
         {{#attr}}
         <tr>
             <td>{{Name}}</td>
         </tr>
         {{/attr}}
     </script>
+
+    <script id="publicgolfgroup" type="text/html">
+        <br/> Public Groups: <br/>
+        {{#attr}}
+        <tr>
+            <td>{{Name}}</td>
+        </tr>
+        {{/attr}}
+    </script>
+
 </body>
 </html>

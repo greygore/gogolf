@@ -56,20 +56,46 @@ $(function(Kinvey, GoGolf) {
 
     $('#getGolfGroups').click(function(e) {
         var TestRounds = new GoGolf.GolfGroups();
+        var myQuery = new Kinvey.Query();
+        myQuery.on('Private').equal('Y')     ;
+        TestRounds.setQuery(myQuery)   ;
+
         TestRounds.fetch({
             success: function(list) {
                 $('#showGolfGroups').html('');
 
                 $.each(list, function(key, val) {
-                    console.log($('#golfgroup').html());
+                    console.log($('#privategolfgroup').html());
                     console.log(val);
-                    var output = Mustache.render($('#golfgroup').html(), val);
+                    var output = Mustache.render($('#privategolfgroup').html(), val);
                     console.log(output);
                     $('#showGolfGroups').append(output);
                 });
             },
             error: function(e) {
-                console.log('Unable to retrieve golf groups');
+                console.log('Unable to private retrieve golf groups');
+            }
+        });
+
+
+        TestRounds = new GoGolf.GolfGroups();
+        myQuery.on('Private').equal('N')     ;
+        TestRounds.setQuery(myQuery)   ;
+
+        TestRounds.fetch({
+            success: function(list) {
+
+
+                $.each(list, function(key, val) {
+                    console.log($('#publicgolfgroup').html());
+                    console.log(val);
+                    var output = Mustache.render($('#publicgolfgroup').html(), val);
+                    console.log(output);
+                    $('#showGolfGroups').append(output);
+                });
+            },
+            error: function(e) {
+                console.log('Unable to retrieve public golf groups');
             }
         });
     });
