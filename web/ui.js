@@ -26,8 +26,6 @@ $(function(Kinvey, GoGolf) {
         }
     });
 
-
-
     $('body').on('submit', '#login', function(e) {
         e.preventDefault();
 
@@ -61,29 +59,6 @@ $(function(Kinvey, GoGolf) {
                 console.log('Login failure');
             }
         });
-    });
-
-
-
-    $('body').on('submit', '#create', function(e) {
-        e.preventDefault();
-
-        Kinvey.User.create({
-            username: $('#signupemail').val(),
-            password: $('#signuppassword').val(),
-            handicap: $('#handicap').val(),
-            zipcode: $('#zipcode').val(),
-            name: $('#fullname').val()
-        }, {
-            success: function(user) {
-                alert("Thank you for signing up. We will send you an email when the site is ready") ;
-                console.log('User created ');
-            },
-            error: function(e) {
-                console.log('User creation failed');
-            }
-        });
-
     });
 
     $('#getRounds').click(function(e) {

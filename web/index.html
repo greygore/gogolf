@@ -176,6 +176,7 @@
 	    </div>
 
 	    {{! LABEL - Handicap }}
+	    {{#menu.info}}
 	    <div id="Layer-34" class="Handicap"  >
 	      <img src="images/template2/Layer-34.png" width="88" height="21" alt="Handicap" />
 	    </div>
@@ -191,6 +192,16 @@
 	    {{! DATA - Rounds this year }}
 	    <div id="Layer-39" class="9"  >
 	      <span style="color: #999; font-size: 22pt; font-weight: 600; position: relative; top: -8px">9</span>
+	    </div>
+
+	    {{! LABEL - Upcoming Rounds header }}
+	    <div id="Layer-27" class="Upcoming Rounds"  >
+	      <img src="images/template2/Layer-27.png" width="150" height="20" alt="Upcoming Rounds" />
+	    </div>
+
+	    {{! LAYOUT - HR under Upcoming Rounds }}
+	    <div id="Layer-36" class="Shape 1 copy 2"  >
+	      <img src="images/template2/Layer-36.png" width="674" height="3" alt="Shape 1 copy 2" />
 	    </div>
 
 	    {{! LAYOUT - Upcoming Rounds row 1 }}
@@ -244,16 +255,7 @@
 	        <img src="images/template2/Layer-32.png" width="96" height="15" alt="TPC Hilton" />
 	      </div>
 	    </div>
-
-	    {{! LABEL - Upcoming Rounds header }}
-	    <div id="Layer-27" class="Upcoming Rounds"  >
-	      <img src="images/template2/Layer-27.png" width="150" height="20" alt="Upcoming Rounds" />
-	    </div>
-
-	    {{! LAYOUT - HR under Upcoming Rounds }}
-	    <div id="Layer-36" class="Shape 1 copy 2"  >
-	      <img src="images/template2/Layer-36.png" width="674" height="3" alt="Shape 1 copy 2" />
-	    </div>
+	    {{/menu.info}}}}
 	  </div>
 
 	  {{! LAYOUT - Middle section }}
@@ -348,15 +350,16 @@
 	      <img src="images/template2/Layer-25.png" width="21" height="19" alt="Polygon 1" style="position: relative; left: {{#menu.search_rounds}}-110px{{/menu.search_rounds}}{{#menu.info}}0px{{/menu.info}}{{#menu.contacts}}120px{{/menu.contacts}}{{#menu.groups}}230px{{/menu.groups}}{{#menu.bag_tags}}345px{{/menu.bag_tags}}{{#menu.new_round}}455px{{/menu.new_round}}"/>
 	    </div>
 
-			{{! LAYOUT - History HR }}	  	
-	    <div id="Layer-35" class="Shape 1 copy"  >
-	      <img src="images/template2/Layer-35.png" width="674" height="3" alt="Shape 1 copy" />
-	    </div>
-
+	    {{#menu.info}}
 	    {{! LABEL - History }}
 	    <div id="Layer-26" class="History"  >
 	      <img src="images/template2/Layer-26.png" width="59" height="20" alt="History" />
 	    </div>
+			{{! LAYOUT - History HR }}	  	
+	    <div id="Layer-35" class="Shape 1 copy"  >
+	      <img src="images/template2/Layer-35.png" width="674" height="3" alt="Shape 1 copy" />
+	    </div>
+	    {{/menu.info}}
 
 	  </div>
 
