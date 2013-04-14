@@ -34,6 +34,25 @@
 		}
   });
 
+  App.RoundParticipant = Kinvey.Entity.extend({
+  	map: {
+  		Round: App.Round,
+  		User: Kinvey.User
+  	},
+
+		constructor: function(attributes) {
+			Kinvey.Entity.prototype.constructor.call(this, attributes, 'RoundParticipants');
+		}
+  })
+
+  App.RoundParticipants = Kinvey.Collection.extend({
+  	entity: App.RoundParticipant,
+
+  	constructor: function(options) {
+  		Kinvey.Collection.prototype.constructor.call(this, 'RoundParticipants', options);
+  	}
+  });
+
     App.GolfGroup = Kinvey.Entity.extend({
         constructor: function(attributes) {
             Kinvey.Entity.prototype.constructor.call(this, attributes, 'GolfGroup');
@@ -52,6 +71,5 @@
             Kinvey.Collection.prototype.constructor.call(this, 'GolfGroup', options);
         }
     });
-
 
 }(window, window.Kinvey));

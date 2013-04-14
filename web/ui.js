@@ -40,10 +40,7 @@ $(function(Kinvey, GoGolf) {
                 $('#showRounds').html('');
 
                 $.each(list, function(key, val) {
-                    console.log($('#round').html());
-                    console.log(val);
                     var output = Mustache.render($('#round').html(), val);
-                    console.log(output);
                     $('#showRounds').append(output);
                 });
             },
@@ -53,6 +50,25 @@ $(function(Kinvey, GoGolf) {
         });
     });
 
+    $('#getRoundParticipants').click(function(e) {
+        var TestParticipants = new GoGolf.RoundParticipants();
+        TestParticipants.fetch({
+            resolve: ['Round', 'User'],
+            success: function(list) {
+                $('#showRoundParticipants').html('');
+
+                $.each(list, function(key, val) {
+                    console.log(val);
+                    var output = Mustache.render($('#roundParticipants').html(), val);
+                    console.log(output);
+                    $('#showRoundParticipants').append(output);
+                });
+            },
+            error: function(e) {
+                console.log('Unable to retrieve round participants');
+            }
+        });
+    });
 
     $('#getGolfGroups').click(function(e) {
         var TestRounds = new GoGolf.GolfGroups();
