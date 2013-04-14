@@ -1,5 +1,5 @@
 $(function(Kinvey, GoGolf) {
-    var loginBody = $('body').html();
+    var loginBody = $('#main').html();
 
     var templateData = {};
 
@@ -16,7 +16,8 @@ $(function(Kinvey, GoGolf) {
         if (null !== user) {
             user.logout({
                 success: function() {
-                    $('body').html(loginBody);
+                    console.log('User logged out');
+                    $('#main').html(loginBody);
                 },
                 error: function(e) {
                     console.log('Logout failure');
@@ -25,7 +26,7 @@ $(function(Kinvey, GoGolf) {
         }
     });
 
-    $('#login').submit(function(e) {
+    $('body').on('submit', '#login', function(e) {
         e.preventDefault();
 
         var user = new Kinvey.User();
@@ -50,7 +51,9 @@ $(function(Kinvey, GoGolf) {
                 };
                 // Now let's display the actual logged in template
                 var output = Mustache.render($('#template2').html(), templateData);
-                $('body').html(output);
+                if (output) {
+                    $('#main').html(output);
+                }
             },
             error: function(e) {
                 console.log('Login failure');
@@ -148,11 +151,6 @@ $(function(Kinvey, GoGolf) {
                 console.log('Unable to retrieve public golf groups');
             }
         });
-    });
-
-    $('#switchTemplate2').click(function(e) {
-        var output = Mustache.render($('#template2').html(), {});
-        $('body').html(output);
     });
 
 }(window.Kinvey, window.GoGolf));
