@@ -292,12 +292,13 @@ body {
 
 /* You named this layer Rounded Rectangle 9 */
 #Layer-28 {
-  position: absolute;
+  position: relative;
   left: 276px;
   top: 829px;
   width: 676px;
   height: 79px;
   z-index: 28;
+  padding-bottom: 3px;
 }
 
 /* You named this layer Rounded Rectangle 9 copy */
@@ -413,7 +414,7 @@ body {
 /* You named this layer Layer 44 */
 #Layer-40 {
   position: absolute;
-  left: 172px;
+  left: 202px;
   top: 7px;
   width: 67px;
   height: 67px;
@@ -423,7 +424,7 @@ body {
 /* You named this layer Layer 45 */
 #Layer-41 {
   position: absolute;
-  left: 272px;
+  left: 302px;
   top: 9px;
   width: 67px;
   height: 67px;
@@ -433,7 +434,7 @@ body {
 /* You named this layer Layer 46 */
 #Layer-42 {
   position: absolute;
-  left: 370px;
+  left: 400px;
   top: 6px;
   width: 68px;
   height: 68px;

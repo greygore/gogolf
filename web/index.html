@@ -192,40 +192,39 @@
 	    <div id="Layer-27" class="Upcoming Rounds"  >
 	      <img src="images/template2/Layer-27.png" width="150" height="20" alt="Upcoming Rounds" />
 	    </div>
-
 	    {{! LAYOUT - HR under Upcoming Rounds }}
 	    <div id="Layer-36" class="Shape 1 copy 2"  >
 	      <img src="images/template2/Layer-36.png" width="674" height="3" alt="Shape 1 copy 2" />
 	    </div>
 
+	    <div id="infoRounds">
+	    </div>
+<!--
 	    {{! LAYOUT - Upcoming Rounds row 1 }}
 	    <div id="Layer-28" class="Rounded Rectangle 9"  >
 	    	{{! LAYOUT - Gray background }}
 	      <img src="images/template2/Layer-28.png" width="676" height="79" alt="Rounded Rectangle 9" />
 
-	      {{! DATA - Profile Pic 1 }}
-	      <div id="Layer-42" class="Layer 46"  >
-	        <img src="images/template2/Layer-42.png" width="68" height="68" alt="Layer 46" />
+	      {{! DATA - Course Name }}
+	      <div id="Layer-30" class="TPC Sawgrass"  >
+	        <img src="images/template2/Layer-30.png" width="125" height="19" alt="TPC Sawgrass" />
 	      </div>
-
-	      {{! DATA - Profile Pic 2 }}
-	      <div id="Layer-41" class="Layer 45"  >
-	        <img src="images/template2/Layer-41.png" width="67" height="67" alt="Layer 45" />
-	      </div>
-
-	      {{! DATA - Profile Pic 3 }}
-	      <div id="Layer-40" class="Layer 44"  >
-	        <img src="images/template2/Layer-40.png" width="67" height="67" alt="Layer 44" />
-	      </div>
-
 	      {{! DATA - Date }}
 	      <div id="Layer-31" class="11172013"  >
 	        <img src="images/template2/Layer-31.png" width="77" height="20" alt="11172013" />
 	      </div>
 
-	      {{! DATA - Course Name }}
-	      <div id="Layer-30" class="TPC Sawgrass"  >
-	        <img src="images/template2/Layer-30.png" width="125" height="19" alt="TPC Sawgrass" />
+	      {{! DATA - Profile Pic 1 }}
+	      <div id="Layer-42" class="Layer 46"  >
+	        <img src="images/template2/Layer-42.png" width="68" height="68" alt="Layer 46" />
+	      </div>
+	      {{! DATA - Profile Pic 2 }}
+	      <div id="Layer-41" class="Layer 45"  >
+	        <img src="images/template2/Layer-41.png" width="67" height="67" alt="Layer 45" />
+	      </div>
+	      {{! DATA - Profile Pic 3 }}
+	      <div id="Layer-40" class="Layer 44"  >
+	        <img src="images/template2/Layer-40.png" width="67" height="67" alt="Layer 44" />
 	      </div>
 	    </div>
 
@@ -234,22 +233,22 @@
 	    	{{! LAYOUT - Gray background }}
 	      <img src="images/template2/Layer-29.png" width="676" height="81" alt="Rounded Rectangle 9 copy" />
 
-	      {{! DATA - Profile Pic 1 }}
-	      <div id="Layer-43" class="Layer 47"  >
-	        <img src="images/template2/Layer-43.png" width="70" height="70" alt="Layer 47" />
+	      {{! DATA - Course Name }}
+	      <div id="Layer-32" class="TPC Hilton"  >
+	        <img src="images/template2/Layer-32.png" width="96" height="15" alt="TPC Hilton" />
 	      </div>
-
 	      {{! DATA - Date }}
 	      <div id="Layer-33" class="1242013"  >
 	        <img src="images/template2/Layer-33.png" width="75" height="20" alt="1242013" />
 	      </div>
 
-	      {{! DATA - Course Name }}
-	      <div id="Layer-32" class="TPC Hilton"  >
-	        <img src="images/template2/Layer-32.png" width="96" height="15" alt="TPC Hilton" />
+	      {{! DATA - Profile Pic 1 }}
+	      <div id="Layer-43" class="Layer 47"  >
+	        <img src="images/template2/Layer-43.png" width="70" height="70" alt="Layer 47" />
 	      </div>
 	    </div>
-	    {{/menu.info}}}}
+-->
+	    {{/menu.info}}
 	  </div>
 
 	  {{! LAYOUT - Middle section }}
@@ -361,6 +360,40 @@
 	  <div id="Layer-44" class="Rectangle 1"  >
 	    <img src="images/template2/Layer-44.png" width="1217" height="90" alt="Rectangle 1" />
 	  </div>
+  </script>
+  <script id="roundTemplate" type="text/mustache">
+    <div id="Layer-28" class="Rounded Rectangle 9"  >
+    	{{! LAYOUT - Gray background }}
+      <img src="images/template2/Layer-28.png" width="676" height="79" alt="Rounded Rectangle 9" />
+
+      {{! DATA - Course Name }}
+      <div id="Layer-30" class="TPC Sawgrass">
+        <span style="font-size: 12pt; font-weight: 600; position: relative; top: -10px; color: #666; white-space: nowrap">{{attr.CourseName}}</span>
+      </div>
+      {{! DATA - Date }}
+      <div id="Layer-31" class="11172013"  >
+        <span style="font-size: 12pt; font-weight: 600; position: relative; top: -5px; color: #999; white-space: nowrap">{{attr.DateTime}}</span>
+      </div>
+
+      {{! DATA - Profile Pic 1 }}
+      {{#participant1}}
+      <div id="Layer-42" class="Layer 46"  >
+        <img src="images/template2/Layer-42.png" width="68" height="68" alt="Layer 46" />
+      </div>
+      {{/participant1}}
+      {{! DATA - Profile Pic 2 }}
+      {{#participant2}}
+      <div id="Layer-41" class="Layer 45"  >
+        <img src="images/template2/Layer-41.png" width="67" height="67" alt="Layer 45" />
+      </div>
+      {{/participant2}}
+      {{! DATA - Profile Pic 3 }}
+      {{#participant3}}
+      <div id="Layer-40" class="Layer 44"  >
+        <img src="images/template2/Layer-40.png" width="67" height="67" alt="Layer 44" />
+      </div>
+      {{/participant3}}
+    </div>
   </script>
 	<script src="//da189i1jfloii.cloudfront.net/js/kinvey-js-0.9.14.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>

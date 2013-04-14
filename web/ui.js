@@ -54,6 +54,7 @@ $(function(Kinvey, GoGolf) {
                 if (output) {
                     $('#main').html(output);
                 }
+                getRounds();
             },
             error: function(e) {
                 console.log('Login failure');
@@ -88,24 +89,45 @@ $(function(Kinvey, GoGolf) {
             $('#main').html(output);
         }
 
+        if ('info' === menu) {
+            getRounds();
+        }
+
     });
 
-    $('#getRounds').click(function(e) {
-        var TestRounds = new GoGolf.Rounds();
-        TestRounds.fetch({
-            success: function(list) {
-                $('#showRounds').html('');
+    function getRounds() {
+        var user = Kinvey.getCurrentUser();
 
+        var myQuery = new Kinvey.Query();
+        myQuery.on('Owner').equal(user.get('_id'));
+
+        var InfoRounds = new GoGolf.Rounds();
+//        InfoRounds.setQuery(myQuery);
+        InfoRounds.fetch({
+            success: function(list) {
+                console.log(list);
+                $('#infoRounds').html('');
+
+                var i = 0;
                 $.each(list, function(key, val) {
-                    var output = Mustache.render($('#round').html(), val);
-                    $('#showRounds').append(output);
+                    // Hardcoding values is fun!
+                    if (0 === i) {
+                        val['participant1'] = true;
+                    } else if (1 === i) {
+                        val['participant2'] = true;
+                        val['participant3'] = true;
+                    }
+                    var output = Mustache.render($('#roundTemplate').html(), val);
+                    $('#infoRounds').append(output);
+                    i++;
                 });
             },
             error: function(e) {
                 console.log('Unable to retrieve rounds');
             }
         });
-    });
+
+    }
 
     $('#getRoundParticipants').click(function(e) {
         var TestParticipants = new GoGolf.RoundParticipants();
