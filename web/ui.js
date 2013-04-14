@@ -78,6 +78,7 @@ $(function(Kinvey, GoGolf) {
                 console.log('User created ');
             },
             error: function(e) {
+                alert(e.description);
                 console.log('User creation failed');
             }
         });
