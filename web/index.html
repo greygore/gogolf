@@ -83,7 +83,7 @@
 
   <!-- This is 'Bottom Bar' -->
   <div id="Layer-2" class="Bottom Bar"  >
-    <img src="Layer-2.png" width="1217" height="90" alt="Bottom Bar" class="pngimg" /></div>
+    <img src="Layer-2.png" width="1417" height="90" alt="Bottom Bar" class="pngimg" style="repeat" /></div>
 
   <!-- This is 'Layer 34' -->
   <div id="Layer-3" class="Layer 34"  >
@@ -91,47 +91,53 @@
     <!-- This is 'Rounded Rectangle 5' -->
 
 
+
+      <form id="create">
+
+
     <!-- This is 'Rounded Rectangle 3 copy 2' -->
     <div id="Layer-17" class="Rounded Rectangle 3 copy 2"  >
-        <input type="text"  value="Full Name"  width="45" height="15" alt="Full Name" style="background: transparent url(Layer-29.png) no-repeat; border:none; font-family: 'Open Sans', sans-serif; font-size:20px" onblur="if(this.value==''){this.value='Full Name'};" onclick="if(this.value=='Full Name'){this.value=''};"/>
+        <input type="text"  value="Full Name" id="fullname"  width="45" height="15" alt="Full Name" style="background: transparent url(Layer-29.png) no-repeat; border:none; font-family: 'Open Sans', sans-serif; font-size:20px" onblur="if(this.value==''){this.value='Full Name'};" onclick="if(this.value=='Full Name'){this.value=''};"/>
 
 
     </div>
 
     <!-- This is 'Rounded Rectangle 3 copy' -->
     <div id="Layer-15" class="Rounded Rectangle 3 copy"  >
-        <input type="password"  value="Password"  width="45" height="15" alt="Password" style="background: transparent url(Layer-29.png) no-repeat; border:none; font-family: 'Open Sans', sans-serif; font-size:20px" onblur="if(this.value==''){this.value='Password'};" onclick="if(this.value=='Password'){this.value=''};"/>
+        <input type="password"  value="Password" id="signuppassword" width="45" height="15" alt="Password" style="background: transparent url(Layer-29.png) no-repeat; border:none; font-family: 'Open Sans', sans-serif; font-size:20px" onblur="if(this.value==''){this.value='Password'};" onclick="if(this.value=='Password'){this.value=''};"/>
 
 
     </div>
 
     <!-- This is 'Rounded Rectangle 3' -->
     <div id="Layer-13" class="Rounded Rectangle 3"  >
-        <input type="text"  value="Email"  width="45" height="15" alt="Email" style="background: transparent url(Layer-31.png) no-repeat; border:none; font-family: 'Open Sans', sans-serif; font-size:20px" onblur="if(this.value==''){this.value='Email'};" onclick="if(this.value=='Email'){this.value=''};"/>
+        <input type="text"  value="Email" id="signupemail"  width="45" height="15" alt="Email" style="background: transparent url(Layer-31.png) no-repeat; border:none; font-family: 'Open Sans', sans-serif; font-size:20px" onblur="if(this.value==''){this.value='Email'};" onclick="if(this.value=='Email'){this.value=''};"/>
 
 
     </div>
 
     <!-- This is 'Rounded Rectangle 4 copy 3' -->
     <div id="Layer-11" class="Rounded Rectangle 4 copy 3"  >
-        <input type="text"  value="Handicap"  width="45" height="15" alt="Handicap" style="background: transparent url(Layer-29.png) no-repeat; border:none; font-family: 'Open Sans', sans-serif; font-size:20px" onblur="if(this.value==''){this.value='Handicap'};" onclick="if(this.value=='Handicap'){this.value=''};"/>
+        <input type="text"  value="Handicap" id="handicap" width="45" height="15" alt="Handicap" style="background: transparent url(Layer-29.png) no-repeat; border:none; font-family: 'Open Sans', sans-serif; font-size:20px" onblur="if(this.value==''){this.value='Handicap'};" onclick="if(this.value=='Handicap'){this.value=''};"/>
 
 
     </div>
 
     <!-- This is 'Rounded Rectangle 4 copy 2' -->
     <div id="Layer-9" class="Rounded Rectangle 4 copy 2"  >
-        <input type="text"  value="Zip Code"  width="15" height="15" alt="Zip Code" style="background: transparent url(Layer-29.png) no-repeat; border:none; font-family: 'Open Sans', sans-serif; font-size:20px" onblur="if(this.value==''){this.value='Zip Code'};" onclick="if(this.value=='Zip Code'){this.value=''};"/>
+        <input type="text"  value="Zip Code" id="zipcode" width="15" height="15" alt="Zip Code" style="background: transparent url(Layer-29.png) no-repeat; border:none; font-family: 'Open Sans', sans-serif; font-size:20px" onblur="if(this.value==''){this.value='Zip Code'};" onclick="if(this.value=='Zip Code'){this.value=''};"/>
 
 
     </div>
 
     <!-- This is 'Sign Up' -->
     <div id="Layer-8" class="Sign Up"  >
-        <input type="Button" height="19" width="53" value="Go Golf" class="loginButtonClass" style="position: absolute;
+        <button id="signup" height="19" width="53" value="Go Golf" class="loginButtonClass" style="position: absolute;
   top: 345px;
 
-  z-index: 29;"/></div>
+  z-index: 29;">Sign up!</button></div>
+
+          </form>
 
     <!-- This is 'Get Connected  Play Golf' -->
     <div id="Layer-7" class="Get Connected  Play Golf"  >

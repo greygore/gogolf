@@ -46,7 +46,7 @@ $(function(Kinvey, GoGolf) {
                         "company": company
                     },
                     "menu": {
-                        "info": true
+                        "new_round": true
                     }
                 };
                 // Now let's display the actual logged in template
@@ -62,32 +62,27 @@ $(function(Kinvey, GoGolf) {
         });
     });
 
-    $(window).on('hashchange', function() {
-        // This is an embarassing hack, but... yeah
-        var user = Kinvey.getCurrentUser();
-        var menu = window.location.hash.substring(1);
 
-        templateData = {
-            "user": {
-                "name": {
-                    "first": user.get('first_name'),
-                    "last": user.get('last_name'),
-                    "full": user.get('first_name')+' '+user.get('last_name')
-                },
-                "handicap": user.get('handicap'),
-                "course": homeCourse,
-                "company": company
+
+    $('body').on('submit', '#create', function(e) {
+        e.preventDefault();
+
+        Kinvey.User.create({
+            username: $('#signupemail').val(),
+            password: $('#signuppassword').val(),
+            handicap: $('#handicap').val(),
+            zipcode: $('#zipcode').val(),
+            name: $('#fullname').val()
+        }, {
+            success: function(user) {
+                alert("Thank you for signing up. We will send you an email when the site is ready") ;
+                console.log('User created ');
             },
-            menu: {}
-        };
-        console.log(menu);
-        templateData.menu[menu] = true;
-        console.log(templateData);
-        // Now let's display the actual logged in template
-        var output = Mustache.render($('#template2').html(), templateData);
-        if (output) {
-            $('#main').html(output);
-        }
+            error: function(e) {
+                alert(e.description);
+                console.log('User creation failed');
+            }
+        });
 
         if ('info' === menu) {
             getRounds();
