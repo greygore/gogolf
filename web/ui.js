@@ -1,4 +1,61 @@
 $(function(Kinvey, GoGolf) {
+    var templateData = {};
+
+    var homeCourses = ["Alpharetta Athletic Club", "Heritage Golf Links", "Bentwater Golf Club"];
+    var homeCourse = homeCourses[Math.floor(Math.random()*homeCourses.length)];
+
+    var companies = ["Trautman Sanders", "Coca Cola", "MailChimp"];
+    var company = companies[Math.floor(Math.random()*companies.length)];
+
+
+    // Let's assume we're logged in...
+    var user = new Kinvey.User();
+    user.login('gwood', 'greygore', {
+        success: function(user) {
+            console.log('Login successful');
+            templateData = {
+                "user": {
+                    "name": {
+                        "first": user.get('first_name'),
+                        "last": user.get('last_name'),
+                        "full": user.get('first_name')+' '+user.get('last_name')
+                    },
+                    "handicap": user.get('handicap'),
+                    "course": homeCourse,
+                    "company": company
+                },
+                "menu": {
+                    "new_round": true
+                }
+            };
+            // Now let's display the actual logged in template
+            var output = Mustache.render($('#template2').html(), templateData);
+            $('body').html(output);
+        },
+        error: function(e) {
+            console.log('Login failure');
+        }
+    });
+
+    $('body').on('click', '#logout', function(e) {
+        var user = Kinvey.getCurrentUser();
+
+        if (null !== user) {
+            user.logout({
+                success: function() {
+                    $('body').html('');
+                },
+                error: function(e) {
+                    console.log('Logout failure');
+                }
+            });
+        }
+    });
+
+
+
+
+
     $('#login').submit(function(e) {
         e.preventDefault();
 
@@ -15,22 +72,6 @@ $(function(Kinvey, GoGolf) {
                 console.log('Login failure');
             }
         });
-    });
-
-    $('#logout').click(function(e) {
-        var user = Kinvey.getCurrentUser();
-
-        if (null !== user) {
-            user.logout({
-                success: function() {
-                    $('#loggedIn').hide();
-                    $('#login').show();
-                },
-                error: function(e) {
-                    console.log('Logout failure');
-                }
-            });
-        }
     });
 
     $('#getRounds').click(function(e) {
@@ -123,6 +164,11 @@ $(function(Kinvey, GoGolf) {
                 console.log('Unable to retrieve public golf groups');
             }
         });
+    });
+
+    $('#switchTemplate2').click(function(e) {
+        var output = Mustache.render($('#template2').html(), {});
+        $('body').html(output);
     });
 
 }(window.Kinvey, window.GoGolf));
