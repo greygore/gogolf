@@ -46,7 +46,7 @@ $(function(Kinvey, GoGolf) {
                         "company": company
                     },
                     "menu": {
-                        "new_round": true
+                        "info": true
                     }
                 };
                 // Now let's display the actual logged in template
@@ -59,6 +59,35 @@ $(function(Kinvey, GoGolf) {
                 console.log('Login failure');
             }
         });
+    });
+
+    $(window).on('hashchange', function() {
+        // This is an embarassing hack, but... yeah
+        var user = Kinvey.getCurrentUser();
+        var menu = window.location.hash.substring(1);
+
+        templateData = {
+            "user": {
+                "name": {
+                    "first": user.get('first_name'),
+                    "last": user.get('last_name'),
+                    "full": user.get('first_name')+' '+user.get('last_name')
+                },
+                "handicap": user.get('handicap'),
+                "course": homeCourse,
+                "company": company
+            },
+            menu: {}
+        };
+        console.log(menu);
+        templateData.menu[menu] = true;
+        console.log(templateData);
+        // Now let's display the actual logged in template
+        var output = Mustache.render($('#template2').html(), templateData);
+        if (output) {
+            $('#main').html(output);
+        }
+
     });
 
     $('#getRounds').click(function(e) {
