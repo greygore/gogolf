@@ -4,7 +4,7 @@ $(function(Kinvey, GoGolf) {
 
         var user = new Kinvey.User();
     
-        user.login($('#username').val(), $('#password').val(), {
+        user.login($('#email').val(), $('#password').val(), {
             success: function(user) {
                 console.log('User logged in');
                 $('#userGivenName').text(user.get('first_name'));
