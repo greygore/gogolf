@@ -1,4 +1,6 @@
 $(function(Kinvey, GoGolf) {
+    var loginBody = $('body').html();
+
     var templateData = {};
 
     var homeCourses = ["Alpharetta Athletic Club", "Heritage Golf Links", "Bentwater Golf Club"];
@@ -8,42 +10,13 @@ $(function(Kinvey, GoGolf) {
     var company = companies[Math.floor(Math.random()*companies.length)];
 
 
-    // Let's assume we're logged in...
-    var user = new Kinvey.User();
-    user.login('gwood', 'greygore', {
-        success: function(user) {
-            console.log('Login successful');
-            templateData = {
-                "user": {
-                    "name": {
-                        "first": user.get('first_name'),
-                        "last": user.get('last_name'),
-                        "full": user.get('first_name')+' '+user.get('last_name')
-                    },
-                    "handicap": user.get('handicap'),
-                    "course": homeCourse,
-                    "company": company
-                },
-                "menu": {
-                    "new_round": true
-                }
-            };
-            // Now let's display the actual logged in template
-            var output = Mustache.render($('#template2').html(), templateData);
-            $('body').html(output);
-        },
-        error: function(e) {
-            console.log('Login failure');
-        }
-    });
-
     $('body').on('click', '#logout', function(e) {
         var user = Kinvey.getCurrentUser();
 
         if (null !== user) {
             user.logout({
                 success: function() {
-                    $('body').html('');
+                    $('body').html(loginBody);
                 },
                 error: function(e) {
                     console.log('Logout failure');
@@ -52,21 +25,32 @@ $(function(Kinvey, GoGolf) {
         }
     });
 
-
-
-
-
     $('#login').submit(function(e) {
         e.preventDefault();
 
         var user = new Kinvey.User();
     
-        user.login($('#username').val(), $('#password').val(), {
+        user.login($('#email').val(), $('#password').val(), {
             success: function(user) {
                 console.log('User logged in');
-                $('#userGivenName').text(user.get('first_name'));
-                $('#login').hide();
-                $('#loggedIn').show();
+                templateData = {
+                    "user": {
+                        "name": {
+                            "first": user.get('first_name'),
+                            "last": user.get('last_name'),
+                            "full": user.get('first_name')+' '+user.get('last_name')
+                        },
+                        "handicap": user.get('handicap'),
+                        "course": homeCourse,
+                        "company": company
+                    },
+                    "menu": {
+                        "new_round": true
+                    }
+                };
+                // Now let's display the actual logged in template
+                var output = Mustache.render($('#template2').html(), templateData);
+                $('body').html(output);
             },
             error: function(e) {
                 console.log('Login failure');
