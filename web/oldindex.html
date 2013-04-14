@@ -42,6 +42,19 @@
 	  {{/attr}}
 	</script>
 
+    <script id="roundParticipants" type="text/html">
+        {{#attr}}
+        <tr>
+            <td>{{Round.attr.CourseName}}</td>
+            <td>{{Round.attr.CourseCity}}</td>
+            <td>{{Round.attr.DateTime}}</td>
+            <td>{{Round.attr.Price}}</td>
+            <td>{{User.attr.first_name}}</td>
+            <td>{{User.attr.last_name}}</td>
+            <td>{{User.attr.email}}</td>
+        </tr>
+        {{/attr}}
+    </script>
     <script id="privategolfgroup" type="text/html">
         {{#attr}}
         <tr>
